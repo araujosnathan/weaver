@@ -35,4 +35,4 @@ class FunctionalDatas:
         self.coverage = (self.total_number_scenarios_implemented*100.0)/(self.total_number_scenarios)
 
     def get_coverage(self):
-        return self.coverage
+        return "%.2f" % self.coverage

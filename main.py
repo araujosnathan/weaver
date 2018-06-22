@@ -14,6 +14,7 @@ platforms = parameters.get('platforms')
 pageGeneralDatas = GeneralDatas(path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, platforms)
 pageGeneralDatas.set_functional_datas_of_project()
 
+
 datas = {} 
 datas['total_endpoints_tested'] = ""
 datas['contract_test_coverage'] = ""
@@ -22,9 +23,9 @@ datas['functional_coverage'] = ""
 datas['features'] = []
 
 
-datas['functional_coverage'] = (pageGeneralDatas.project_functional_coverage)
+datas['functional_coverage'] = (pageGeneralDatas.get_functional_coverage_projetc())
 datas['total_scenarios'] = (pageGeneralDatas.total_scenarios_of_project)
-datas['contract_test_coverage'] = (pageGeneralDatas.project_contract_coverage())
+datas['contract_test_coverage'] = (pageGeneralDatas.get_project_contract_coverage())
 datas['total_endpoints_tested'] = (pageGeneralDatas.get_total_number_endpoints_tested())
 
 for feature in pageGeneralDatas.array_features:
@@ -36,5 +37,7 @@ for feature in pageGeneralDatas.array_features:
         'scenarios_not_implemented': feature.array_scenarios_not_implemented,
         'coverage': feature.get_coverage()
     })
-with open('generalDatas.json', 'w') as outfile:  
-    json.dump(datas, outfile, ensure_ascii=False)
+
+datas =  json.dumps(datas, ensure_ascii=False)
+with open('generalDatas.json', 'w') as outfile: 
+    outfile.write("data = '" +  str(datas) + "'")

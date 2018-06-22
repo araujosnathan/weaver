@@ -76,6 +76,9 @@ class GeneralDatas:
             self.total_scenarios_of_project = self.total_scenarios_of_project + feature.get_total_number_scenarios()
         self.project_functional_coverage = (self.total_scenarios_implemented_of_project*100.0)/self.total_scenarios_of_project
     
+    def get_functional_coverage_projetc(self):
+        return "%.2f" % self.project_functional_coverage
+
     def get_contract_tests_from_project(self):
         list_of_contract_tests_files = os.listdir(self.path_to_contract_tests_folder)
         file_pattern = "*testing*"
@@ -118,7 +121,7 @@ class GeneralDatas:
         self.total_number_of_endpoints = self.total_number_of_endpoints + len(self.array_endpoints)
         return self.total_number_of_endpoints
 
-    def project_contract_coverage(self):
+    def get_project_contract_coverage(self):
         self.project_contract_coverage = (self.get_total_number_endpoints_tested()*100.0)/self.total_endpoints_used
-        return self.project_contract_coverage
+        return "%.2f" % self.project_contract_coverage
     
