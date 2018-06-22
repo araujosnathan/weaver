@@ -31,13 +31,10 @@
     <script>
         function loadBands() {
             var generalDatas = JSON.parse(data);
-            console.log(generalDatas.functional_coverage)
-
             document.getElementById('FUNCTIONAL_PERCENTAGE').innerHTML = generalDatas.functional_coverage + "%";
             document.getElementById('FUNCTIONAL_SCENARIOS_NUMBER').innerHTML = generalDatas.total_scenarios;
             document.getElementById('CONTRACT_PERCENTAGE').innerHTML = generalDatas.contract_test_coverage + "%";
             document.getElementById('ENDPOINTS_NUMBER').innerHTML = generalDatas.total_endpoints_tested;
-           
         }
     
     </script>
