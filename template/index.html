@@ -27,17 +27,8 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script id="json" src="./data/generalDatas.json"></script>
-    <script>
-        function loadBands() {
-            var generalDatas = JSON.parse(data);
-            document.getElementById('FUNCTIONAL_PERCENTAGE').innerHTML = generalDatas.functional_coverage + "%";
-            document.getElementById('FUNCTIONAL_SCENARIOS_NUMBER').innerHTML = generalDatas.total_scenarios;
-            document.getElementById('CONTRACT_PERCENTAGE').innerHTML = generalDatas.contract_test_coverage + "%";
-            document.getElementById('ENDPOINTS_NUMBER').innerHTML = generalDatas.total_endpoints_tested;
-        }
-    
-    </script>
+    <script id="json" src="./datas/generalDatas.json"></script>
+    <script src="js/load-datas/load-general-data.js"></script>
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -46,7 +37,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" onload="loadBands();">
+<body class="fix-header fix-sidebar">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -214,8 +205,8 @@
                                     <div class="container">
                                         <div class="panel-group">
                                             <!-- <div class="panel panel-default"> -->
-                                                <div class="panel-heading">
-                                                    ALL-FEATURES-AND-SCENARIOS-HERE
+                                                <div id="ALL-FEATURES-AND-SCENARIOS"class="panel-heading">
+                                                    
                                                 </div>
                                         </div>
     
