@@ -27,9 +27,17 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <!-- LOAD DATAS -->
+    <script id="json" src="./datas/dashboardMenu.json"></script>
+    <script src="js/load-datas/load-dashboard-menu.js"></script>
     <script id="json" src="./datas/generalDatas.json"></script>
     <script src="js/load-datas/load-general-data.js"></script>
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <script id="json" src="./datas/sprintMetrics.json"></script>
+    
+    <!-- END LOAD DATAS -->
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -76,8 +84,8 @@
                         
                         <li class="nav-label">Home</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">platform_menu_label</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                    REPORT_PLATFORM_NAME
+                            <ul id="REPORT_PLATFORM_NAME" aria-expanded="false" class="collapse">
+                                    <!-- <li><a href='index.html'>dashboord.menu_platforms[i]</a></li> -->
                             </ul>
                         </li>
                         <!--BUGSCOMMENTEND <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">graphic_menu_label</span></a>
@@ -231,11 +239,11 @@
                                                 <th>unit_test_column_table</th>
                                                 <th>functional_column_table</th>
                                                 <th>contract_test_column_table</th>
+                                                <th>endpoints_column_table</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                           ALL_SPRINTS_METRICS             
-                                            
+                                        <tbody id="TABLE-SPRINT-METRICS">
+                                                  
                                         </tbody>
                                     </table>
                                 </div>

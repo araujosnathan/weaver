@@ -3,23 +3,19 @@ import os, fnmatch, re
 from functional_datas_class import FunctionalDatas
 
 class GeneralDatas:
-    path_to_features_folder = ""
-    path_to_contract_tests_folder = ""
-    platform = ""
-    total_scenarios_implemented_of_project = 0
-    total_scenarios_of_project = 0
-    project_functional_coverage = 0
-    total_endpoints_used = 0
-    project_contract_coverage = 0
-    total_number_of_endpoints = 0
-    array_features = []
-    array_endpoints = []
 
     def __init__(self, path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, platform):
         self.path_to_features_folder = path_to_features_folder
         self.path_to_contract_tests_folder = path_to_contract_tests_folder
         self.platform = platform
         self.total_endpoints_used = total_endpoints_used
+        self.total_scenarios_implemented_of_project = 0
+        self.total_scenarios_of_project = 0
+        self.project_functional_coverage = 0
+        self.project_contract_coverage = 0
+        self.total_number_of_endpoints = 0
+        self.array_features = []
+        self.array_endpoints = []
 
     def get_features_from_project(self):
         list_of_feature_files = os.listdir(self.path_to_features_folder)
@@ -78,6 +74,7 @@ class GeneralDatas:
     
     def get_functional_coverage_projetc(self):
         return "%.2f" % self.project_functional_coverage
+        
 
     def get_contract_tests_from_project(self):
         list_of_contract_tests_files = os.listdir(self.path_to_contract_tests_folder)
@@ -124,4 +121,5 @@ class GeneralDatas:
     def get_project_contract_coverage(self):
         self.project_contract_coverage = (self.get_total_number_endpoints_tested()*100.0)/self.total_endpoints_used
         return "%.2f" % self.project_contract_coverage
+        
     
