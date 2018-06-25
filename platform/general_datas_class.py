@@ -8,10 +8,11 @@ class GeneralDatas:
    
     fields = Commons()
 
-    def __init__(self, path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, path_unit_test_ios, platform):
+    def __init__(self, path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, path_unit_test_ios, path_unit_test_android, platform):
         self.path_to_features_folder = path_to_features_folder
         self.path_to_contract_tests_folder = path_to_contract_tests_folder
         self.path_unit_test_ios = path_unit_test_ios
+        self.path_unit_test_android = path_unit_test_android
         self.platform = platform
         self.total_endpoints_used = total_endpoints_used
         self.total_scenarios_implemented_of_project = 0
@@ -20,6 +21,7 @@ class GeneralDatas:
         self.project_contract_coverage = 0
         self.total_number_of_endpoints = 0
         self.unit_test_ios_coverage = 0
+        self.unit_test_android_coverage = 0
         self.array_features = []
         self.array_endpoints = []
 
@@ -147,17 +149,28 @@ class GeneralDatas:
             self.fields.check_path_to_unit_test_ios(self.path_unit_test_ios)
             unit_test_ios_file = open(self.path_unit_test_ios, 'r')
             for line in unit_test_ios_file.readlines():
-                if re.search(r'total_coverage">(\d)', line):
-                    self.unit_test_ios_coverage =  re.search(r'total_coverage">\d+\.\d+', line).group().split('>')[1].strip()
+                if re.search(r'total_coverage">\d+\.\d+|total_coverage">\d+', line):
+                    self.unit_test_ios_coverage = re.search(r'total_coverage">\d+\.\d+|total_coverage">\d+', line).group().split('>')[1].strip()
             return self.unit_test_ios_coverage
+        else:
+            return "N/A"
+
+    def get_unit_test_android_coverage(self):
+        if self.fields.check_tag_to_unit_test_android(self.path_unit_test_android):
+            self.fields.check_path_to_unit_test_android(self.path_unit_test_android)
+            unit_test_android_file = open(self.path_unit_test_android, 'r')
+            for line in unit_test_android_file.readlines():
+                if re.sub(".*Total.*<td class=\"ctr2\">(\\d{1,3}(\\,\\d{1,2}){0,1}%)</td><td class=\"bar\">.*", "\\1", line):
+                    self.unit_test_android_coverage =  re.sub(".*Total.*<td class=\"ctr2\">(\\d{1,3}(\\,\\d{1,2}){0,1}%)</td><td class=\"bar\">.*", "\\1", line).split('%')[0].replace(',','.')
+            return self.unit_test_android_coverage
         else:
             return "N/A"
 
     def get_unit_test_coverage(self):
         if self.platform == 'ios':
             return self.get_unit_test_ios_coverage()
-        else:
-            return "N/A"
+        elif self.platform == 'android':
+            return self.get_unit_test_android_coverage()
         
 
     

@@ -43,3 +43,14 @@ class Commons:
         if not os.path.isfile(path):
             print '\033[91m' + "File not found: " + path +" \nPlease, set a correct path to unit test file in tag: "+ "\033[4mios_unit_test_report\033[m"
             exit(1)
+    
+    def check_tag_to_unit_test_android(self, path):
+        if path is None:
+            return False
+        else:
+            return True 
+
+    def check_path_to_unit_test_android(self, path):
+        if not os.path.isfile(path):
+            print '\033[91m' + "File not found: " + path +" \nPlease, set a correct path to unit test file in tag: "+ "\033[4mandroid_unit_test_report\033[m"
+            exit(1)
