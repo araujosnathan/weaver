@@ -24,6 +24,9 @@ class GeneralDatas:
         for file_in_dir in list_of_feature_files:  
             if fnmatch.fnmatch(file_in_dir, file_pattern):
                 array_features_file.append(file_in_dir)
+        if not array_features_file:
+            print "\033[31;1mDo not exist any feature in folder:" + self.path_to_features_folder +  "\nPlease, set correct folder in " + "\033[4mconfig.yml\033[0m" +"\033[m"
+            exit(1)
         return array_features_file
 
     def get_feature_name(self, path_to_feature_file):

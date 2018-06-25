@@ -19,7 +19,6 @@ class GenerateGeneralDatas:
 
         datas['platform'] = self.platform
         datas['functional_coverage'] = (self.pageGeneralDatas.get_functional_coverage_projetc())
-        # print self.pageGeneralDatas.total_scenarios_of_project
         datas['total_scenarios'] = (self.pageGeneralDatas.total_scenarios_of_project)
         datas['contract_test_coverage'] = (self.pageGeneralDatas.get_project_contract_coverage())
         datas['total_endpoints_tested'] = (self.pageGeneralDatas.get_total_number_endpoints_tested())
@@ -33,8 +32,6 @@ class GenerateGeneralDatas:
                 'scenarios_not_implemented': feature.array_scenarios_not_implemented,
                 'coverage': feature.get_coverage()
             })
-
-        # datas =  json.dumps(datas, ensure_ascii=False)
         return datas
     
     def set_sprint_metrics_dashbord_by_platform(self):
