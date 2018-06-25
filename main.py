@@ -6,7 +6,6 @@ import os
 import shutil
 from platform.general_datas_class import GeneralDatas 
 from platform.generate_generalDatas_class import GenerateGeneralDatas 
-from platform.commons_class import Commons
 config_file = open('config.yml')
 
 parameters                          = yaml.load(config_file)
@@ -15,9 +14,6 @@ path_to_contract_tests_folder       = parameters.get('path_to_contract_tests')
 total_endpoints_used                = parameters.get('total_endpoints_used')
 platforms                           = parameters.get('platforms')
 report_name                         = parameters.get('report_name')
-
-fields = Commons()
-fields.check_path_to_features(path_to_features_folder)
 
 dashboard_menu = {}
 dashboard_menu['menu_platforms'] = []

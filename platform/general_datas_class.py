@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 import os, fnmatch, re
 from functional_datas_class import FunctionalDatas
+from platform.commons_class import Commons
+
 
 class GeneralDatas:
+   
+    fields = Commons()
 
     def __init__(self, path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, platform):
         self.path_to_features_folder = path_to_features_folder
@@ -18,6 +22,7 @@ class GeneralDatas:
         self.array_endpoints = []
 
     def get_features_from_project(self):
+        self.fields.check_path_to_feature_folder(self.path_to_features_folder)
         list_of_feature_files = os.listdir(self.path_to_features_folder)
         file_pattern = "*.feature"
         array_features_file = []
@@ -30,6 +35,7 @@ class GeneralDatas:
         return array_features_file
 
     def get_feature_name(self, path_to_feature_file):
+        self.fields.check_path_to_feature_file(path_to_feature_file)
         feature_file = open(path_to_feature_file, 'r')
         array_matches = ['Funcionalidade','Feature']
         for line in feature_file.readlines():
