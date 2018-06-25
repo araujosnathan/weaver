@@ -3,6 +3,7 @@
 import yaml
 import json
 import os
+import re
 import shutil
 from platform.general_datas_class import GeneralDatas 
 from platform.generate_generalDatas_class import GenerateGeneralDatas 
@@ -12,6 +13,7 @@ parameters                          = yaml.load(config_file)
 path_to_features_folder             = parameters.get('path_to_features')
 path_to_contract_tests_folder       = parameters.get('path_to_contract_tests')
 total_endpoints_used                = parameters.get('total_endpoints_used')
+path_unit_test_ios                  = parameters.get('ios_unit_test_report')
 platforms                           = parameters.get('platforms')
 report_name                         = parameters.get('report_name')
 
@@ -22,7 +24,7 @@ sprint_platforms['platforms'] = []
 
 for platform in platforms.split(','):
     platform = platform.strip()
-    pageGeneralDatas = GeneralDatas(path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, platform)
+    pageGeneralDatas = GeneralDatas(path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, path_unit_test_ios, platform)
     generateGeneralDatas = GenerateGeneralDatas(pageGeneralDatas, platform, report_name)
 
     sprint_datas = generateGeneralDatas.set_dashboard_by_platform()

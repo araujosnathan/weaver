@@ -45,7 +45,7 @@ class GenerateGeneralDatas:
         sprint_metric = {
             'report_name': self.report_name,
             'platform': self.platform,
-            'unit_test_coverage': "N/A",
+            'unit_test_coverage': self.pageGeneralDatas.get_unit_test_coverage(),
             'functional_coverage': self.pageGeneralDatas.get_functional_coverage_projetc(),
             'contract_coverage': self.pageGeneralDatas.get_project_contract_coverage(),
             'number_endpoints': self.pageGeneralDatas.get_total_number_endpoints_tested()

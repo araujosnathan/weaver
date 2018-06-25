@@ -8,7 +8,13 @@ $(document).ready(function() {
             if(fileName.includes(generalDatas.platforms[i].platform)){
                 document.getElementById('FUNCTIONAL_PERCENTAGE').innerHTML = generalDatas.platforms[i].functional_coverage + "%";
                 document.getElementById('FUNCTIONAL_SCENARIOS_NUMBER').innerHTML = generalDatas.platforms[i].total_scenarios;
-                document.getElementById('CONTRACT_PERCENTAGE').innerHTML = generalDatas.platforms[i].contract_test_coverage + "%";
+                if(generalDatas.platforms[i].contract_test_coverage == "N/A")
+                {
+                    document.getElementById('CONTRACT_PERCENTAGE').innerHTML = generalDatas.platforms[i].contract_test_coverage;
+                }
+                else{
+                    document.getElementById('CONTRACT_PERCENTAGE').innerHTML = generalDatas.platforms[i].contract_test_coverage + "%";
+                }
                 document.getElementById('ENDPOINTS_NUMBER').innerHTML = generalDatas.platforms[i].total_endpoints_tested;
                 for(var index_feature = 0; index_feature < generalDatas.platforms[i].features.length ; index_feature++)
                 {
@@ -103,8 +109,14 @@ $(document).ready(function() {
                             document.getElementById('COLUMNS-SPRINT-METRICS' + index_sprint).insertAdjacentHTML('beforeend', "<td><span class='badge badge-success'>"
                                                 + sprintMetricDatas.metrics[index_sprint].functional_coverage + "%</span></td>");
                         }
-                
-                        if(sprintMetricDatas.metrics[index_sprint].contract_coverage >= dod_contract_test && sprintMetricDatas.metrics[index_sprint].contract_coverage < 100)
+                        
+                        if(sprintMetricDatas.metrics[index_sprint].contract_coverage == "N/A"){
+                            document.getElementById('COLUMNS-SPRINT-METRICS' + index_sprint).insertAdjacentHTML('beforeend', "<td><span class='badge badge-warning'>"
+                                                + sprintMetricDatas.metrics[index_sprint].contract_coverage + "</span></td>");
+                            document.getElementById('COLUMNS-SPRINT-METRICS' + index_sprint).insertAdjacentHTML('beforeend', "<td><span class='badge badge-warning'>"
+                                                + sprintMetricDatas.metrics[index_sprint].number_endpoints + "</span></td>");
+                        }
+                        else if(sprintMetricDatas.metrics[index_sprint].contract_coverage >= dod_contract_test && sprintMetricDatas.metrics[index_sprint].contract_coverage < 100)
                         {
                             document.getElementById('COLUMNS-SPRINT-METRICS' + index_sprint).insertAdjacentHTML('beforeend', "<td><span class='badge badge-info'>"
                                                 + sprintMetricDatas.metrics[index_sprint].contract_coverage + "%</span></td>");
