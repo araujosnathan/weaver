@@ -112,7 +112,7 @@ $(document).ready(function() {
                                                 + sprintMetricDatas.metrics[index_sprint].number_endpoints + "</span></td>");
                                                 
                         }
-                        else if(sprintMetricDatas.metrics[0].contract_coverage < dod_contract_test){
+                        else if(sprintMetricDatas.metrics[index_sprint].contract_coverage < dod_contract_test){
                             document.getElementById('COLUMNS-SPRINT-METRICS' + index_sprint).insertAdjacentHTML('beforeend', "<td><span class='badge badge-danger'>"
                                                 + sprintMetricDatas.metrics[index_sprint].contract_coverage + "%</span></td>");
                             document.getElementById('COLUMNS-SPRINT-METRICS' + index_sprint).insertAdjacentHTML('beforeend', "<td><span class='badge badge-danger'>"

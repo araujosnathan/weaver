@@ -32,7 +32,7 @@ class FunctionalDatas:
         if self.total_number_scenarios > 0:
             self.coverage = (self.total_number_scenarios_implemented*100.0)/(self.total_number_scenarios)
         else:
-            print "\033[33;1mThis feature: \033[4m" + self.feature_name + "\033[0m has not test scenarios.\nSo it is not possible to generate any metric about this feature!!\033[m"
+            print "\033[33mThis feature: \033[4m" + self.feature_name + "\033[0m\033[33m has not test scenarios.\nSo it is not possible to generate any metric about this feature!!\033[m"
 
     def get_coverage(self):
         return "%.2f" % self.coverage

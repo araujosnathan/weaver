@@ -86,15 +86,18 @@ class GeneralDatas:
         
 
     def get_contract_tests_from_project(self):
-        list_of_contract_tests_files = os.listdir(self.path_to_contract_tests_folder)
-        file_pattern = "*testing*"
         array_contract_tests_files = []
-        for file_in_dir in list_of_contract_tests_files:  
-            if fnmatch.fnmatch(file_in_dir, file_pattern):
-                array_contract_tests_files.append(file_in_dir)
+        if self.fields.check_tag_to_contract_folder(self.path_to_contract_tests_folder):
+            self.fields.check_path_to_contract_folder(self.path_to_contract_tests_folder)
+            list_of_contract_tests_files = os.listdir(self.path_to_contract_tests_folder)
+            file_pattern = "*testing*"
+            for file_in_dir in list_of_contract_tests_files:  
+                if fnmatch.fnmatch(file_in_dir, file_pattern):
+                    array_contract_tests_files.append(file_in_dir)
         return array_contract_tests_files
 
     def set_endpoints_from_file(self, path_to_contract_tests_file):
+        self.fields.check_path_to_contract_file(path_to_contract_tests_file)
         contract_tests_file = open(path_to_contract_tests_file, 'r')
         for line in contract_tests_file.readlines():
             if any(re.findall(r"const PATH", line)):
@@ -128,7 +131,9 @@ class GeneralDatas:
         return self.total_number_of_endpoints
 
     def get_project_contract_coverage(self):
-        self.project_contract_coverage = (self.get_total_number_endpoints_tested()*100.0)/self.total_endpoints_used
-        return "%.2f" % self.project_contract_coverage
-        
+        if self.fields.check_tag_to_contract_folder(self.path_to_contract_tests_folder):
+            self.project_contract_coverage = (self.get_total_number_endpoints_tested()*100.0)/self.total_endpoints_used
+            return "%.2f" % self.project_contract_coverage
+        else:
+            return 0
     

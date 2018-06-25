@@ -41,7 +41,7 @@ class GenerateGeneralDatas:
             sprint_historic =  json.dumps(sprint_historic, ensure_ascii=False)
             with open('template/datas/sprintHistoric.json', 'w') as outfile: 
                 outfile.write(sprint_historic)
-
+        
         sprint_metric = {
             'report_name': self.report_name,
             'platform': self.platform,
