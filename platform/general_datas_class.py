@@ -171,7 +171,5 @@ class GeneralDatas:
             return self.get_unit_test_ios_coverage()
         elif self.platform == 'android':
             return self.get_unit_test_android_coverage()
-        
-
-    
-    
+        else:
+            return "N/A"
