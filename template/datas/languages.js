@@ -2,8 +2,6 @@ var langJSON = {
     "languages": [{
             "tag":"pt-br",
             "title_report": "Weaver - Dashboard de Qualidade",
-            "unit_test_warning_button": "Testes de Contrato",
-            "contract_test_warning_button": "Testes Unitários",
             "platform_menu_label": "Platformas",
             "graphic_menu_label": "Gráficos",
             "report_label": "Relatório de Qualidade",

@@ -3,6 +3,7 @@
 import yaml
 import json
 import shutil
+import fnmatch
 from platform.general_datas_class import GeneralDatas 
 from platform.generate_generalDatas_class import GenerateGeneralDatas 
 
@@ -13,22 +14,33 @@ def main(argv):
     lang = ''
     teams = 1
     if (len(argv) < 1):
-        print 'main.py -l <language> -t <number_of_teams>'
+        print 'usage: main.py [-l, --lang] <language>'
         sys.exit(2)
     else:
         try:
             opts, args = getopt.getopt(argv,"l:t:",["lang=","teams="])
         except getopt.GetoptError:
-            print 'main.py -l <language> -t <number_of_teams>'
+            print 'usage: main.py [-l, --lang] <language>'
             sys.exit(2)
         for opt, arg in opts:
             if opt == '-h':
-                print 'main.py [-l, --lang] <language> | [-t,--teams <outputfile>'
+                print 'usage: main.py [-l, --lang] <language>'
                 sys.exit()
             elif opt in ("-l", "--lang"):
                 lang = arg
             elif opt in ("-t", "--teams"):
                 teams = arg
+
+def check_language(language):
+    lang_file = open('./template/datas/languages.js', 'r')
+    status = False
+    for line in lang_file.readlines():
+        pattern = '*"tag":' + '"' + language + '"*'
+        if fnmatch.fnmatch(line, pattern):
+            status = True
+    if not status:
+        print "\033[33mThis language: \033[4m" + language + "\033[0m\033[33m was not found in language dictionary.\nSo, report will be generate in english. \nYou can add your langue in \033[4mtemplate/datas/languages.js\033[m"
+
 
 def weaver():
     config_file = open('config.yml')
@@ -70,4 +82,5 @@ def weaver():
 
 
 main(sys.argv[1:])
+check_language(lang)
 weaver()
