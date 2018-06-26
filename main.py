@@ -6,7 +6,6 @@ import shutil
 import fnmatch
 from platform.general_datas_class import GeneralDatas 
 from platform.generate_generalDatas_class import GenerateGeneralDatas 
-
 import sys, getopt
 
 def main(argv):
@@ -80,7 +79,9 @@ def weaver():
     with open('template/datas/dashboardMenu.json', 'w') as outfile:
         outfile.write("dashboard_menu = '" +  str(dashboard_menu) + "'")
 
-
+print "Generating Weaver Report ... "
 main(sys.argv[1:])
 check_language(lang)
 weaver()
+print "Weaver Report generated with successful ... "
+   
