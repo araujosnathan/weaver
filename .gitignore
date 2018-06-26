@@ -1,0 +1,5 @@
+config.yml
+platform/*.pyc
+.DS_Store
+platform/.DS_Store
+template/datas/*.json
