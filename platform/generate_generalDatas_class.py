@@ -36,10 +36,10 @@ class GenerateGeneralDatas:
     
     def set_sprint_metrics_dashbord_by_platform(self):
         sprint_historic = {}
-        if not os.path.isfile("template/datas/sprintHistoric.json"):
+        if not os.path.isfile("sprintHistoric.json"):
             sprint_historic['metrics'] = []
             sprint_historic =  json.dumps(sprint_historic, ensure_ascii=False)
-            with open('template/datas/sprintHistoric.json', 'w') as outfile: 
+            with open('sprintHistoric.json', 'w') as outfile: 
                 outfile.write(sprint_historic)
         
         sprint_metric = {
@@ -51,15 +51,15 @@ class GenerateGeneralDatas:
             'number_endpoints': self.pageGeneralDatas.get_total_number_endpoints_tested()
         }
 
-        with open('template/datas/sprintHistoric.json') as json_data:
+        with open('sprintHistoric.json') as json_data:
             new_metrics = json.load(json_data)
             
         new_metrics['metrics'].append(sprint_metric)
         new_metrics = json.dumps(new_metrics, ensure_ascii=False)
 
-        with open('template/datas/sprintHistoric.json', 'w') as outfile: 
+        with open('sprintHistoric.json', 'w') as outfile: 
             outfile.write(new_metrics)
-        with open('template/datas/sprintMetrics.json', 'w') as outfile:
+        with open('sprintMetrics.json', 'w') as outfile:
             outfile.write("data_metrics = '" +  str(new_metrics) + "'")
 
 

@@ -6,7 +6,7 @@ import shutil
 import fnmatch
 from platform.general_datas_class import GeneralDatas 
 from platform.generate_generalDatas_class import GenerateGeneralDatas 
-import sys, getopt
+import sys, getopt, os
 
 def main(argv):
     global lang
@@ -60,6 +60,11 @@ def weaver():
     sprint_platforms = {}
     sprint_platforms['platforms'] = []
 
+    if os.path.isdir(report_name):
+        shutil.rmtree(report_name)
+    shutil.copytree('template/', report_name)
+
+    
     for platform in platforms.split(','):
         platform = platform.strip()
         pageGeneralDatas = GeneralDatas(path_to_features_folder, path_to_contract_tests_folder, total_endpoints_used, path_unit_test_ios, path_unit_test_android, platform)
@@ -69,15 +74,19 @@ def weaver():
         sprint_platforms['platforms'].append(sprint_datas)
         generateGeneralDatas.set_sprint_metrics_dashbord_by_platform()
         dashboard_menu['menu_platforms'].append(platform)
-        shutil.copy2('template/index.html', 'template/index-' + platform + '.html')
+        shutil.copy2(report_name + '/index.html', report_name + '/index-' + platform + '.html')
 
     sprint_platforms = json.dumps(sprint_platforms, ensure_ascii=False)
-    with open('template/datas/generalDatas.json', 'w') as outfile: 
-                outfile.write("data = '" +  str(sprint_platforms) + "'")
+    with open(report_name + '/datas/generalDatas.json', 'w') as outfile: 
+        outfile.write("data = '" +  str(sprint_platforms) + "'")
 
     dashboard_menu = json.dumps(dashboard_menu, ensure_ascii=False)
-    with open('template/datas/dashboardMenu.json', 'w') as outfile:
+    with open(report_name + '/datas/dashboardMenu.json', 'w') as outfile:
         outfile.write("dashboard_menu = '" +  str(dashboard_menu) + "'")
+
+    os.remove(report_name + '/index.html')
+    shutil.copy2('sprintHistoric.json', report_name + '/datas/sprintHistoric.json')
+    shutil.copy2('sprintMetrics.json', report_name + '/datas/sprintMetrics.json')
 
 print "Generating Weaver Report ... "
 main(sys.argv[1:])
