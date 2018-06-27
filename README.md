@@ -9,7 +9,15 @@ Weaver is a testing metrics report and review for agile teams. All projects need
 ```
 git clone https://github.com/nathsilv/weaver.git
 ````
-After you have cloned, you can see two main files: `main.py` and `config.yml`
+After you have cloned, you can see three main files: `main.py`, `config.yml` and `requeriments.txt `<br>
+
+# What is need for running it?
+You need to have `python` installed in your machine. <br>
+And you will need to have `pip` installed for managing dependencies of project. <br>
+After these installations, you can execute command below for installing all dependencies. 
+``` 
+pip install -r requeriments.txt 
+``` 
 
 ## Parameters
 ``` 
@@ -17,19 +25,20 @@ python main.py [-l, --lang] <language>
 ``` 
 *[language]* is parameter for report language, today **Weaver** just supporting portuguese and english. But you can contribute and send a Pull Request to add your language: `template/datas/languages.js` <br>
 
-Parameter List:
-``` 
-pt-br  - Portuguese 
-eng - English 
-``` 
+Language Parameter List:
+|Parameter | Language   |
+|-----:     |------:        |
+|pt-br      | Portuguese    |
+|eng        | English       |     
 
 ## Setting up Config file: `config.yml`
 These parameters below can be used: <br>
 
-| Parameters        | Content           |
+| Parameter        | Content           |
 | ------------- |:-------------:|
 |path_to_features:                      | set up full path to feature folder. Ex.: "/Users/MyProject/features/"                         |
 |path_to_contract_tests:                | set up full path to contract tests folder. Ex.: "/Users/MyProject/test_files/"                |
+|total_endpoints_used:                  | set up total number of endpoints used in project. Ex.: 77|
 |platforms:                             | set up tags of the platforms being used in the scenario writing files in cucumber. Ex: If scenario is automated, set @android tag in *.feature* file and in *config.yml* set "android". If you have more platforms, set all tags. Ex: "android, ios, web"                                                                                                                 |
 |report_name:                           | Set up report name or can used sprint name for better view in evolution tables and graphics. Ex.: "Sprint Dev 01"                                                                                                                    |
 |ios_unit_test_report:                  | Set up full path to iOS unit test report of Slather. Ex.: "/Users/DevProject/reports/index.html"                                                                                                  |
