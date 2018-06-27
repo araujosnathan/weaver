@@ -25,11 +25,26 @@ python main.py [-l, --lang] <language>
 ``` 
 *[language]* is parameter for report language, today **Weaver** just supporting portuguese and english. But you can contribute and send a Pull Request to add your language: `template/datas/languages.js` <br>
 
-Language Parameter List:
-| Parameter        | Content           |
-| ------------- |:-------------:|     
-|pt-br      | Portuguese    |
-|eng        | English       |     
+Language Parameter List: <br>
+<table> 
+  <thead>
+    <tr> 
+      <th style="text-align: left">Parameter</th> 
+      <th style="text-align: center">Language</th> 
+    </tr> 
+  </thead> 
+  <tbody> 
+    <tr> 
+      <td style="text-align: left">pt-br</td> 
+      <td style="text-align: center">Portuguese</td> 
+    </tr> 
+    <tr> 
+      <td style="text-align: left">en</td> 
+      <td style="text-align: center">English</td> 
+    </tr>
+  </tbody>
+</table> 
+
 
 ## Setting up Config file: `config.yml`
 These parameters below can be used: <br>
