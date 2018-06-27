@@ -1,4 +1,4 @@
-![](images/waever.png)
+![](images/weaver.png)
 
 Weaver is a testing metrics report and review for agile teams. All projects need of overview about unit, service or functional testing and what is being built in sprints, in this way, weaver compiles all those informations and developing team/stakeholders can see it.
 
