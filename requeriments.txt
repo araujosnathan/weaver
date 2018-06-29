@@ -1,4 +1,5 @@
-#!/usr/bin/env python
 
 PyYAML==3.12
 PyMySQL
+requests
+python-firebase
