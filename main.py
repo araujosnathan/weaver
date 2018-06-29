@@ -4,8 +4,9 @@ import yaml
 import json
 import shutil
 import fnmatch
-from platform.general_datas_class import GeneralDatas 
-from platform.generate_generalDatas_class import GenerateGeneralDatas 
+from platforms.general_datas_class import GeneralDatas 
+from platforms.generate_generalDatas_class import GenerateGeneralDatas 
+from connect_firebase.connection import ConnectionFirebase
 import sys, getopt, os
 
 def main(argv):
@@ -42,6 +43,13 @@ def check_language(language):
 
 
 def weaver():
+    SECRET = 
+    DSN = 
+    EMAIL =
+
+    myConn = ConnectionFirebase(SECRET, DSN, EMAIL)
+    myConn.connect_to_firebase()
+
     config_file = open('config.yml')
     parameters                          = yaml.load(config_file)
     path_to_features_folder             = parameters.get('path_to_features')
@@ -58,6 +66,8 @@ def weaver():
     dashboard_menu['language'] = ""
     dashboard_menu['language'] = lang
     sprint_platforms = {}
+    sprint_platforms['sprint_name'] = ""
+    sprint_platforms['sprint_name'] = report_name
     sprint_platforms['platforms'] = []
 
     if os.path.isdir(report_name):
@@ -76,6 +86,7 @@ def weaver():
         dashboard_menu['menu_platforms'].append(platform)
         shutil.copy2(report_name + '/index.html', report_name + '/index-' + platform + '.html')
 
+    myConn.insert_sprint_metrics(sprint_platforms)
     sprint_platforms = json.dumps(sprint_platforms, ensure_ascii=False)
     with open(report_name + '/datas/generalDatas.json', 'w') as outfile: 
         outfile.write("data = '" +  str(sprint_platforms) + "'")

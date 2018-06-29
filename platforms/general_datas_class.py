@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os, fnmatch, re
 from functional_datas_class import FunctionalDatas
-from platform.commons_class import Commons
+from platforms.commons_class import Commons
 
 
 class GeneralDatas:

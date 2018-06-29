@@ -11,12 +11,14 @@ class GenerateGeneralDatas:
     def set_dashboard_by_platform(self):
         self.pageGeneralDatas.set_functional_datas_of_project()
         datas = {} 
+        datas['sprint_name'] = ""
         datas['total_endpoints_tested'] = ""
         datas['contract_test_coverage'] = ""
         datas['total_scenarios'] = ""
         datas['functional_coverage'] = ""
         datas['features'] = []
 
+        datas['sprint_name'] = self.report_name
         datas['platform'] = self.platform
         datas['functional_coverage'] = (self.pageGeneralDatas.get_functional_coverage_projetc())
         datas['total_scenarios'] = (self.pageGeneralDatas.total_scenarios_of_project)
