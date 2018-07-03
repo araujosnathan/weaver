@@ -1,5 +1,7 @@
 config.yml
-platform/*.pyc
+platforms/*.pyc
+connect_firebase/*.pyc
 .DS_Store
 platform/.DS_Store
 template/datas/*.json
+connect_firebase/*.pyc

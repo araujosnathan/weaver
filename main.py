@@ -43,9 +43,9 @@ def check_language(language):
 
 
 def weaver():
-    SECRET = 
-    DSN = 
-    EMAIL =
+    SECRET = 'Klqgn9faAY6gAukEqyhAoRgj7Ge78Z3uvarHMjeu'
+    DSN = 'https://weaver-report.firebaseio.com/'
+    EMAIL = 'nathanael.araujos@gmail.com'
 
     myConn = ConnectionFirebase(SECRET, DSN, EMAIL)
     myConn.connect_to_firebase()
@@ -68,7 +68,7 @@ def weaver():
     sprint_platforms = {}
     sprint_platforms['sprint_name'] = ""
     sprint_platforms['sprint_name'] = report_name
-    sprint_platforms['platforms'] = []
+    sprint_platforms['platforms'] = {}
 
     if os.path.isdir(report_name):
         shutil.rmtree(report_name)
@@ -81,7 +81,7 @@ def weaver():
         generateGeneralDatas = GenerateGeneralDatas(pageGeneralDatas, platform, report_name)
 
         sprint_datas = generateGeneralDatas.set_dashboard_by_platform()
-        sprint_platforms['platforms'].append(sprint_datas)
+        sprint_platforms['platforms'].update(sprint_datas)
         generateGeneralDatas.set_sprint_metrics_dashbord_by_platform()
         dashboard_menu['menu_platforms'].append(platform)
         shutil.copy2(report_name + '/index.html', report_name + '/index-' + platform + '.html')

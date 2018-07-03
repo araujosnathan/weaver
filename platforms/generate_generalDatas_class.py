@@ -10,16 +10,14 @@ class GenerateGeneralDatas:
 
     def set_dashboard_by_platform(self):
         self.pageGeneralDatas.set_functional_datas_of_project()
+
         datas = {} 
-        datas['sprint_name'] = ""
         datas['total_endpoints_tested'] = ""
         datas['contract_test_coverage'] = ""
         datas['total_scenarios'] = ""
         datas['functional_coverage'] = ""
         datas['features'] = []
 
-        datas['sprint_name'] = self.report_name
-        datas['platform'] = self.platform
         datas['functional_coverage'] = (self.pageGeneralDatas.get_functional_coverage_projetc())
         datas['total_scenarios'] = (self.pageGeneralDatas.total_scenarios_of_project)
         datas['contract_test_coverage'] = (self.pageGeneralDatas.get_project_contract_coverage())
@@ -34,7 +32,10 @@ class GenerateGeneralDatas:
                 'scenarios_not_implemented': feature.array_scenarios_not_implemented,
                 'coverage': feature.get_coverage()
             })
-        return datas
+        
+        metrics_by_platform = {}
+        metrics_by_platform[self.platform] = datas
+        return metrics_by_platform
     
     def set_sprint_metrics_dashbord_by_platform(self):
         sprint_historic = {}
