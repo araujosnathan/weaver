@@ -39,7 +39,7 @@ class ConnectionFirebase:
         
 
 
-SECRET =
+SECRET = 
 DSN = 
 EMAIL = 
 
@@ -49,5 +49,5 @@ sprint_name = "CB-Sprint-02"
 sprints = myConn.get_sprint_metrics()
 sprints =  json.dumps(sprints, ensure_ascii=False)
 sprints = sprints.encode('utf-8', 'ignore')
-with open('Sprintmetrics.json', 'w') as outfile:
-    outfile.write("data = '" +  sprints+ "'")
+with open('Sprintmetrics.js', 'w') as outfile:
+    outfile.write("var sprintsTableJSON = " + sprints )
