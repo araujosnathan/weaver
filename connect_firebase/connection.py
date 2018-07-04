@@ -29,3 +29,22 @@ class ConnectionFirebase:
             return self.firebase.get('/metrics', None)
         except TypeError as error:
             print error
+    
+    def get_sprint_metrics_by_sprint(self, sprints, sprint_name):
+        json = {}
+        for sprint_id in sprints:
+            if sprints[sprint_id]["sprint_name"] == sprint_name:
+                json = sprints[sprint_id]
+        return json
+        
+
+
+SECRET = 
+DSN = 
+EMAIL = 
+
+myConn = ConnectionFirebase(SECRET, DSN, EMAIL)
+myConn.connect_to_firebase()
+sprint_name = "CB-Sprint-02"
+sprints = myConn.get_sprint_metrics()
+print myConn.get_sprint_metrics_by_sprint(sprints, sprint_name)['sprint_name']
