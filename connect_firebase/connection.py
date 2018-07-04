@@ -39,7 +39,7 @@ class ConnectionFirebase:
         
 
 
-SECRET = 
+SECRET =
 DSN = 
 EMAIL = 
 
@@ -47,4 +47,7 @@ myConn = ConnectionFirebase(SECRET, DSN, EMAIL)
 myConn.connect_to_firebase()
 sprint_name = "CB-Sprint-02"
 sprints = myConn.get_sprint_metrics()
-print myConn.get_sprint_metrics_by_sprint(sprints, sprint_name)['sprint_name']
+sprints =  json.dumps(sprints, ensure_ascii=False)
+sprints = sprints.encode('utf-8', 'ignore')
+with open('Sprintmetrics.json', 'w') as outfile:
+    outfile.write("data = '" +  sprints+ "'")
