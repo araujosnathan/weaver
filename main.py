@@ -43,9 +43,9 @@ def check_language(language):
 
 
 def weaver():
-    SECRET = 'Klqgn9faAY6gAukEqyhAoRgj7Ge78Z3uvarHMjeu'
-    DSN = 'https://weaver-report.firebaseio.com/'
-    EMAIL = 'nathanael.araujos@gmail.com'
+    SECRET = 
+    DSN = 
+    EMAIL = 
 
     myConn = ConnectionFirebase(SECRET, DSN, EMAIL)
     myConn.connect_to_firebase()
